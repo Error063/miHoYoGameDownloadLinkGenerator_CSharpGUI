@@ -1,11 +1,4 @@
-from flask import Flask, request
-import json
-
-app = Flask(__name__)
-
-# 该程序用于模拟米哈游服务器所返回的游戏客户端资源下载链接集合，以测试程序是否运行正常
-
-resourceJson = """{
+{
   "data": {
     "game": {
       "latest": {
@@ -388,14 +381,4 @@ resourceJson = """{
   },
   "message": "OK",
   "retcode": 0
-}"""
-
-@app.route('/api')
-def hello_world():
-    raw = json.loads(resourceJson)
-    if request.args["from"] == "debug":
-        return json.dumps(raw)
-
-
-if __name__ == '__main__':
-    app.run()
+}
