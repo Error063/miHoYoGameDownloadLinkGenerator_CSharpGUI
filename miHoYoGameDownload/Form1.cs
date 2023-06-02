@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
-using Newtonsoft.Json.Linq;
 
 namespace miHoYoGameDownload
 {
@@ -25,7 +23,7 @@ namespace miHoYoGameDownload
             version.Text = "";
             string apiUrl;
             string choice = (string)gameChooseBox.SelectedItem;
-            switch (choice)
+            switch (choice) //根据用户选择来选择api链接
             {
                 case "原神（天空岛，国服）":
                     apiUrl = Properties.Resources.genshin_china;
@@ -66,23 +64,23 @@ namespace miHoYoGameDownload
             {
 
                 client.Encoding = Encoding.UTF8;
-                try
+                try //从米哈游服务器获取游戏资源
                 {
                     data = client.DownloadString(apiUrl);
                 }
-                catch (Exception ex)
+                catch (Exception ex) //如果出现访问错误，则报错并退出程序
                 {
                     MessageBox.Show(ex.Message, "错误");
                     this.Close();
                     System.Environment.Exit(0);
                 }
-                Console.WriteLine(data);
+                //Console.WriteLine(data);
                 try
                 {
-                    ApiAnalyze analyze = new ApiAnalyze(data, false);
-                    version.Text = analyze.getCurrentVersion();
-                    mainLink.Text = analyze.getMainLink();
-                    if (analyze.haveVoice())
+                    ApiAnalyze analyze = new ApiAnalyze(data, false); //新建一个ApiAnalyze对象
+                    version.Text = analyze.getCurrentVersion(); //获取当前版本
+                    mainLink.Text = analyze.getMainLink(); //获取当前版本的下载链接
+                    if (analyze.haveVoice()) //如果当前游戏资源中包含语音包，则输出相应的语音包
                     {
                         string[] voices = analyze.getLauguageExists();
                         foreach (string voice in voices)
@@ -94,14 +92,12 @@ namespace miHoYoGameDownload
                     {
                         voiceLinks.Text = "暂无该项";
                     }
-                    diffsButton.Visible = analyze.haveDiffPacks();
-                    getNextDownload.Visible = analyze.havePreDownload();
+                    diffsButton.Visible = analyze.haveDiffPacks();  //如果当前游戏资源包含增量更新包，则显示该按钮
+                    getNextDownload.Visible = analyze.havePreDownload(); //如果当前游戏资源包含预更新资源包，则显示该按钮
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "错误");
-                    this.Close();
-                    System.Environment.Exit(0);
                 }
                 finally
                 {
@@ -112,18 +108,13 @@ namespace miHoYoGameDownload
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //打开增量更新页面
         {
             Form2 form2 = new Form2(data, (string)gameChooseBox.SelectedItem);
             form2.ShowDialog();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void getNextDownload_Click(object sender, EventArgs e)
+        private void getNextDownload_Click(object sender, EventArgs e) //打开预更新界面
         {
             Form3 form3 = new Form3(data, (string)gameChooseBox.SelectedItem);
             form3.ShowDialog();

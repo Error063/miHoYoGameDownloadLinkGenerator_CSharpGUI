@@ -150,7 +150,7 @@
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "差分包";
+            this.Text = "增量更新包";
             this.ResumeLayout(false);
             this.PerformLayout();
 

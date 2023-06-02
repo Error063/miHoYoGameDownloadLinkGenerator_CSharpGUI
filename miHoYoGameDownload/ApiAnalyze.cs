@@ -1,10 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace miHoYoGameDownload
 {
@@ -14,25 +10,17 @@ namespace miHoYoGameDownload
         private JArray diffPacks;
         private JObject links;
 
-        public ApiAnalyze(string apiJson, bool isPreDownload)
+        public ApiAnalyze(string apiJson, bool isPreDownload) //初始化ApiAnalyze类（需要传递apiJson文本和预更新标志）
         {
             JObject res = JObject.Parse(apiJson);
             this.links = (JObject)res["data"];
-            if ((int)res["retcode"] == 0 && links.Count > 0)
+            if ((int)res["retcode"] == 0 && links.Count > 0) //如果json文本正常
             {
-                if (isPreDownload)
-                {
-                    this.nowGame = (JObject)links["pre_download_game"]["latest"];
-                    this.diffPacks = (JArray)links["pre_download_game"]["diffs"];
-                }
-                else
-                {
-                    this.nowGame = (JObject)links["game"]["latest"];
-                    this.diffPacks = (JArray)links["game"]["diffs"];
-                }
-
+                string dist = isPreDownload ? "pre_download_game" : "game"; //获取的资源是不是预更新资源
+                this.nowGame = (JObject)links[dist]["latest"]; //获取完整包资源对象
+                this.diffPacks = (JArray)links[dist]["diffs"]; //获取增量包资源对象
             }
-            else
+            else //如果json文本不正常，则抛出错误
             {
                 throw new Exception("'data' item in json text is wrong!");
             }
@@ -41,7 +29,7 @@ namespace miHoYoGameDownload
         public string getCurrentVersion()
         {
             return this.nowGame["version"].ToString();
-        }
+        } //返回当前对象的版本号
 
         public string getMainLink()
         {
@@ -56,12 +44,12 @@ namespace miHoYoGameDownload
                 path = segpath.Substring(0, segpath.Length - 4);
             }
             return path;
-        }
+        } //获取当前的完整包链接
 
         public bool haveVoice()
         {
             return ((JArray)this.nowGame["voice_packs"]).Count > 0;
-        }
+        } //判断是否有语音资源
 
         public string[] getLauguageExists()
         {
@@ -73,7 +61,7 @@ namespace miHoYoGameDownload
                 voiceExist[i]=(voices[i]["language"].ToString());
             }
             return voiceExist;
-        }
+        } //获取存在的语音资源中对应的语言
 
         public string getVoiceLink(string lauguage)
         {
@@ -87,12 +75,12 @@ namespace miHoYoGameDownload
                 }
             }
             return null;
-        }
+        } //获取相对应的语音资源（需要传递希望输出的语音包的语言代码）
 
         public bool haveDiffPacks()
         {
             return diffPacks.Count > 0;
-        }
+        } //判断是否存在增量更新资源
 
         public string[] getExistVersionInDiffs()
         {
@@ -102,7 +90,7 @@ namespace miHoYoGameDownload
                 version[i] = diffPacks[i]["version"].ToString();
             }
             return version;
-        }
+        } //获取存在的增量更新资源的目标版本
 
         public string getMainLinkInDiffs(string version)
         {
@@ -115,7 +103,7 @@ namespace miHoYoGameDownload
                 }
             }
             return null;
-        }
+        } //获取增量更新包本体链接（需要传递目标版本号）
 
         public bool haveVoiceInDiffs(string version)
         {
@@ -127,7 +115,7 @@ namespace miHoYoGameDownload
                 }
             }
             return false;
-        }
+        } //判断目标版本中是否存在语音资源（需要传递目标版本号）
 
         public string[] getLauguageExistsInDiffs(string version)
         {
@@ -145,7 +133,7 @@ namespace miHoYoGameDownload
                 }
             }
             return null;
-        }
+        } //获取目标版本中存在的语音资源中对应的语言
 
         public string getVoiceInDiffs(string version, string lauguage)
         {
@@ -164,11 +152,11 @@ namespace miHoYoGameDownload
                 }
             }
             return null;
-        }
+        } //获取对应语音资源的增量更新链接（需要传递目标版本号和希望输出的语音包的语言代码）
 
         public bool havePreDownload()
         {
             return this.links["pre_download_game"].Count() > 0;
-        }
+        } //判断是否存在预更新资源
     }
 }
