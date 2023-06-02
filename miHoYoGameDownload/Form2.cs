@@ -43,5 +43,10 @@ namespace miHoYoGameDownload
                 diffPackageLink_voices.Text = "暂无该项";
             }
         }
+
+        private void versions_choice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+        }
     }
 }

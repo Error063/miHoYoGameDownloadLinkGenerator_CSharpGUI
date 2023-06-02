@@ -144,13 +144,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;generate.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="version_text.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="version_text.Location" type="System.Drawing.Point, System.Drawing">
-    <value>365, 26</value>
+    <value>582, 26</value>
   </data>
   <data name="version_text.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 28</value>
@@ -171,13 +171,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;version_text.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="version.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="version.Location" type="System.Drawing.Point, System.Drawing">
-    <value>572, 26</value>
+    <value>789, 26</value>
   </data>
   <data name="version.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 28</value>
@@ -195,7 +195,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;version.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="mianLink_text.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -222,7 +222,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;mianLink_text.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="mainLink.Location" type="System.Drawing.Point, System.Drawing">
     <value>45, 115</value>
@@ -243,7 +243,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;mainLink.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="voiceLinks_text.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -270,7 +270,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;voiceLinks_text.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="voiceLinks.Location" type="System.Drawing.Point, System.Drawing">
     <value>45, 197</value>
@@ -294,28 +294,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;voiceLinks.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="gameChooseBox.Items" xml:space="preserve">
-    <value>原神（天空岛，国服）</value>
+    <value>原神</value>
   </data>
   <data name="gameChooseBox.Items1" xml:space="preserve">
-    <value>原神（国际服）</value>
+    <value>崩坏：星穹铁道</value>
   </data>
   <data name="gameChooseBox.Items2" xml:space="preserve">
-    <value>崩坏：星穹铁道（星穹列车，国服）</value>
+    <value>崩坏3</value>
   </data>
   <data name="gameChooseBox.Items3" xml:space="preserve">
-    <value>崩坏：星穹铁道（国际服）</value>
-  </data>
-  <data name="gameChooseBox.Items4" xml:space="preserve">
-    <value>崩坏3（国服）</value>
-  </data>
-  <data name="gameChooseBox.Items5" xml:space="preserve">
-    <value>崩坏3（国际服）</value>
-  </data>
-  <data name="gameChooseBox.Items6" xml:space="preserve">
-    <value>Debug (only for development test)</value>
+    <value>自定义来源</value>
   </data>
   <data name="gameChooseBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>52, 23</value>
@@ -327,7 +318,7 @@
     <value>13</value>
   </data>
   <data name="gameChooseBox.Text" xml:space="preserve">
-    <value>原神（天空岛，国服）</value>
+    <value>原神</value>
   </data>
   <data name="&gt;&gt;gameChooseBox.Name" xml:space="preserve">
     <value>gameChooseBox</value>
@@ -339,7 +330,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;gameChooseBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="diffsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>857, 584</value>
@@ -351,7 +342,7 @@
     <value>14</value>
   </data>
   <data name="diffsButton.Text" xml:space="preserve">
-    <value>差分更新包</value>
+    <value>增量更新</value>
   </data>
   <data name="diffsButton.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -366,7 +357,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;diffsButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="getNextDownload.Location" type="System.Drawing.Point, System.Drawing">
     <value>635, 584</value>
@@ -393,17 +384,38 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;getNextDownload.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="isGlobal.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="isGlobal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>368, 25</value>
+  </data>
+  <data name="isGlobal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 32</value>
+  </data>
+  <data name="isGlobal.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="isGlobal.Text" xml:space="preserve">
+    <value>国际服</value>
+  </data>
+  <data name="&gt;&gt;isGlobal.Name" xml:space="preserve">
+    <value>isGlobal</value>
+  </data>
+  <data name="&gt;&gt;isGlobal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;isGlobal.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;isGlobal.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1112, 662</value>
   </data>

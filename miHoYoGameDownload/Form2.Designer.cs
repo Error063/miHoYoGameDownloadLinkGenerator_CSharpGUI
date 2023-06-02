@@ -74,6 +74,7 @@
             this.versions_choice.Name = "versions_choice";
             this.versions_choice.Size = new System.Drawing.Size(100, 29);
             this.versions_choice.TabIndex = 3;
+            this.versions_choice.SelectedIndexChanged += new System.EventHandler(this.versions_choice_SelectedIndexChanged);
             // 
             // gameName_show
             // 

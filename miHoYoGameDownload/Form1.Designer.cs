@@ -39,6 +39,7 @@
             this.gameChooseBox = new System.Windows.Forms.ComboBox();
             this.diffsButton = new System.Windows.Forms.Button();
             this.getNextDownload = new System.Windows.Forms.Button();
+            this.isGlobal = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // generate
@@ -87,12 +88,10 @@
             resources.GetString("gameChooseBox.Items"),
             resources.GetString("gameChooseBox.Items1"),
             resources.GetString("gameChooseBox.Items2"),
-            resources.GetString("gameChooseBox.Items3"),
-            resources.GetString("gameChooseBox.Items4"),
-            resources.GetString("gameChooseBox.Items5"),
-            resources.GetString("gameChooseBox.Items6")});
+            resources.GetString("gameChooseBox.Items3")});
             resources.ApplyResources(this.gameChooseBox, "gameChooseBox");
             this.gameChooseBox.Name = "gameChooseBox";
+            this.gameChooseBox.SelectedIndexChanged += new System.EventHandler(this.gameChooseBox_SelectedIndexChanged);
             // 
             // diffsButton
             // 
@@ -108,11 +107,18 @@
             this.getNextDownload.UseVisualStyleBackColor = true;
             this.getNextDownload.Click += new System.EventHandler(this.getNextDownload_Click);
             // 
+            // isGlobal
+            // 
+            resources.ApplyResources(this.isGlobal, "isGlobal");
+            this.isGlobal.Name = "isGlobal";
+            this.isGlobal.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AcceptButton = this.generate;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.isGlobal);
             this.Controls.Add(this.getNextDownload);
             this.Controls.Add(this.diffsButton);
             this.Controls.Add(this.gameChooseBox);
@@ -146,6 +152,7 @@
         private System.Windows.Forms.ComboBox gameChooseBox;
         private System.Windows.Forms.Button diffsButton;
         private System.Windows.Forms.Button getNextDownload;
+        private System.Windows.Forms.CheckBox isGlobal;
     }
 }
 
