@@ -144,7 +144,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;generate.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>9</value>
   </data>
   <data name="version_text.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -171,7 +171,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;version_text.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
   <data name="version.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -195,7 +195,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;version.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>7</value>
   </data>
   <data name="mianLink_text.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -222,7 +222,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;mianLink_text.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="mainLink.Location" type="System.Drawing.Point, System.Drawing">
     <value>45, 115</value>
@@ -243,60 +243,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;mainLink.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="status_text.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="status_text.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 600</value>
-  </data>
-  <data name="status_text.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 28</value>
-  </data>
-  <data name="status_text.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="status_text.Text" xml:space="preserve">
-    <value>状态：</value>
-  </data>
-  <data name="&gt;&gt;status_text.Name" xml:space="preserve">
-    <value>status_text</value>
-  </data>
-  <data name="&gt;&gt;status_text.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;status_text.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;status_text.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="status.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="status.Location" type="System.Drawing.Point, System.Drawing">
-    <value>386, 600</value>
-  </data>
-  <data name="status.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 28</value>
-  </data>
-  <data name="status.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="status.Text" xml:space="preserve">
-    <value>就绪</value>
-  </data>
-  <data name="&gt;&gt;status.Name" xml:space="preserve">
-    <value>status</value>
-  </data>
-  <data name="&gt;&gt;status.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;status.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;status.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="voiceLinks_text.AutoSize" type="System.Boolean, mscorlib">

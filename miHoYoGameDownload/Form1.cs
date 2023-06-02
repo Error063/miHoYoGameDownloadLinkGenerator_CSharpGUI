@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace miHoYoGameDownload
@@ -23,7 +17,6 @@ namespace miHoYoGameDownload
 
         private void button1_Click(object sender, EventArgs e)
         {
-            status.Text = "运行中";
             diffsButton.Visible = false;
             getNextDownload.Visible = false;
             UseWaitCursor = true;
@@ -67,76 +60,55 @@ namespace miHoYoGameDownload
                     apiUrl = Properties.Resources.genshin_china;
                     break;
             }
-            
+
 
             using (var client = new WebClient())
             {
-                
-                client.Encoding = Encoding.UTF8;
 
-                //string apiUrl = "http://sdk-static.mihoyo.com/hk4e_cn/mdk/launcher/api/resource?key=eYd89JmJ&launcher_id=18";
-                //try
-                
-                
+                client.Encoding = Encoding.UTF8;
                 try
                 {
                     data = client.DownloadString(apiUrl);
-                }catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message,"错误");
+                    MessageBox.Show(ex.Message, "错误");
                     this.Close();
                     System.Environment.Exit(0);
                 }
-                status.Text = "API访问完成";
                 Console.WriteLine(data);
-                //textBox1.Text = data;
-                JObject res = JObject.Parse(data);
-                if ((int)res["retcode"] == 0)
+                try
                 {
-                    JObject links = (JObject)res["data"];
-                    JObject nowGame = (JObject)links["game"]["latest"];
-                    version.Text = (string)nowGame["version"];
-                    string path;
-                    if ((string)nowGame["path"] != String.Empty)
+                    ApiAnalyze analyze = new ApiAnalyze(data, false);
+                    version.Text = analyze.getCurrentVersion();
+                    mainLink.Text = analyze.getMainLink();
+                    if (analyze.haveVoice())
                     {
-                        path = (string)nowGame["path"];
+                        string[] voices = analyze.getLauguageExists();
+                        foreach (string voice in voices)
+                        {
+                            voiceLinks.Text += voice + ": " + analyze.getVoiceLink(voice) + "\n";
+                        }
                     }
                     else
                     {
-                        string segpath = (string)nowGame["segments"][0]["path"];
-                        path = segpath.Substring(0, segpath.Length - 4);
-                    }
-                    mainLink.Text = path;
-                    int i = 0;
-                    JArray voices = (JArray)nowGame["voice_packs"];
-                    if (voices.Count > 0)
-                    {
-                        for (i = 0; i < voices.Count; i++)
-                        {
-                            voiceLinks.Text += (string)voices[i]["language"] + ": " + (string)voices[i]["path"] + "\n";
-                        }
-                    }else
-                    {
                         voiceLinks.Text = "暂无该项";
                     }
-                    status.Text = "就绪";
-
-                    if (links["pre_download_game"].Count() > 0)
-                    {
-                        getNextDownload.Visible = true;
-                    }
-                    JArray diffs = (JArray)links["game"]["diffs"];
-                    if (diffs.Count > 0)
-                    {
-                        diffsButton.Visible = true;
-                    }
+                    diffsButton.Visible = analyze.haveDiffPacks();
+                    getNextDownload.Visible = analyze.havePreDownload();
                 }
-                else
+                catch (Exception ex)
                 {
-                    status.Text = "API返回值异常";
-                    MessageBox.Show("API返回值异常");
+                    MessageBox.Show(ex.Message, "错误");
+                    this.Close();
+                    System.Environment.Exit(0);
                 }
-                UseWaitCursor = false;
+                finally
+                {
+
+                    UseWaitCursor = false;
+                }
+                
             }
         }
 

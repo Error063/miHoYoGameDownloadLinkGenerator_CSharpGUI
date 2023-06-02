@@ -1,12 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace miHoYoGameDownload
@@ -14,44 +7,31 @@ namespace miHoYoGameDownload
     public partial class Form3 : Form
     {
         private string apiJson;
+        private ApiAnalyze analyze;
         public Form3(string apiJson, string gameName_input)
         {
             InitializeComponent();
-            this.apiJson = apiJson;
+            analyze = new ApiAnalyze(apiJson, true);
             Text += ": " + gameName_input; 
             gameName.Text = gameName_input;
-            JObject res = JObject.Parse(apiJson);
-            JObject links = (JObject)res["data"];
-            JObject nowGame = (JObject)links["pre_download_game"]["latest"];
-            version.Text = (string)nowGame["version"];
-            string path;
-            if ((string)nowGame["path"] != String.Empty)
+            version.Text = this.analyze.getCurrentVersion();
+            mainLink.Text = this.analyze.getMainLink();
+            if (analyze.haveVoice())
             {
-                path = (string)nowGame["path"];
-            }
-            else
-            {
-                string segpath = (string)nowGame["segments"][0]["path"];
-                path = segpath.Substring(0, segpath.Length - 4);
-            }
-            mainLink.Text = path;
-            int i = 0;
-            JArray voices = (JArray)nowGame["voice_packs"];
-            if (voices.Count > 0)
-            {
-                for (i = 0; i < voices.Count; i++)
+                string[] voice_list = analyze.getLauguageExists();
+                foreach (string voice in voice_list)
                 {
-                    voiceLinks.Text += (string)voices[i]["language"] + ": " + (string)voices[i]["path"] + "\n";
+                    voiceLinks.Text += voice + ": " + analyze.getVoiceLink(voice) + "\n";
                 }
             }
             else
             {
                 voiceLinks.Text = "暂无该项";
             }
-            JArray diffs = (JArray)links["pre_download_game"]["diffs"];
-            for (i = 0; i < diffs.Count; i++)
+            String[] versions = analyze.getExistVersionInDiffs();
+            foreach (string version in versions)
             {
-                versions_choice.Items.Add(diffs[i]["version"].ToString());
+                versions_choice.Items.Add(version);
             }
             versions_choice.SelectedIndex = 0;
             button1_Click(null, null);
@@ -61,29 +41,20 @@ namespace miHoYoGameDownload
         {
             diffPackageLink_voices.Text = "";
             diffPackageLink_main.Text = "";
-            JObject res = JObject.Parse(apiJson);
-            JObject links = (JObject)res["data"];
-            JArray diffs = (JArray)links["pre_download_game"]["diffs"];
             string choice = (string)versions_choice.SelectedItem;
-            for (int i = 0; i < diffs.Count; i++)
+
+            diffPackageLink_main.Text = this.analyze.getMainLinkInDiffs(choice);
+            if (this.analyze.haveVoiceInDiffs(choice))
             {
-                if ((diffs[i]["version"].ToString()).Equals(choice))
+                string[] lauguages = this.analyze.getLauguageExistsInDiffs(choice);
+                foreach (string lauguage in lauguages)
                 {
-                    diffPackageLink_main.Text = diffs[i]["path"].ToString();
-                    JArray voices = (JArray)diffs[i]["voice_packs"];
-                    if (voices.Count > 0)
-                    {
-                        for (int j = 0; j < voices.Count; j++)
-                        {
-                            diffPackageLink_voices.Text += voices[j]["language"].ToString() + ": " + voices[j]["path"].ToString() + "\n";
-                        }
-                    }
-                    else
-                    {
-                        diffPackageLink_voices.Text = "暂无该项";
-                    }
-                    break;
+                    diffPackageLink_voices.Text += lauguage + ": " + this.analyze.getVoiceInDiffs(choice, lauguage) + "\n";
                 }
+            }
+            else
+            {
+                diffPackageLink_voices.Text = "暂无该项";
             }
         }
     }

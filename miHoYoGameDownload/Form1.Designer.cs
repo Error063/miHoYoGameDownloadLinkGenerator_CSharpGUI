@@ -34,8 +34,6 @@
             this.version = new System.Windows.Forms.Label();
             this.mianLink_text = new System.Windows.Forms.Label();
             this.mainLink = new System.Windows.Forms.TextBox();
-            this.status_text = new System.Windows.Forms.Label();
-            this.status = new System.Windows.Forms.Label();
             this.voiceLinks_text = new System.Windows.Forms.Label();
             this.voiceLinks = new System.Windows.Forms.RichTextBox();
             this.gameChooseBox = new System.Windows.Forms.ComboBox();
@@ -70,16 +68,6 @@
             resources.ApplyResources(this.mainLink, "mainLink");
             this.mainLink.Name = "mainLink";
             this.mainLink.ReadOnly = true;
-            // 
-            // status_text
-            // 
-            resources.ApplyResources(this.status_text, "status_text");
-            this.status_text.Name = "status_text";
-            // 
-            // status
-            // 
-            resources.ApplyResources(this.status, "status");
-            this.status.Name = "status";
             // 
             // voiceLinks_text
             // 
@@ -130,8 +118,6 @@
             this.Controls.Add(this.gameChooseBox);
             this.Controls.Add(this.voiceLinks);
             this.Controls.Add(this.voiceLinks_text);
-            this.Controls.Add(this.status);
-            this.Controls.Add(this.status_text);
             this.Controls.Add(this.mainLink);
             this.Controls.Add(this.mianLink_text);
             this.Controls.Add(this.version);
@@ -156,8 +142,6 @@
         private System.Windows.Forms.Label version;
         private System.Windows.Forms.Label mianLink_text;
         private System.Windows.Forms.TextBox mainLink;
-        private System.Windows.Forms.Label status_text;
-        private System.Windows.Forms.Label status;
         private System.Windows.Forms.Label voiceLinks_text;
         private System.Windows.Forms.RichTextBox voiceLinks;
         private System.Windows.Forms.ComboBox gameChooseBox;
