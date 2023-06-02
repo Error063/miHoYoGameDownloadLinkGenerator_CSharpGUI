@@ -47,7 +47,7 @@ namespace miHoYoGameDownload
                     apiUrl = Properties.Resources.starrail_global;
                     break;
                 case "Debug (only for development test)":
-                    if (MessageBox.Show("该选项仅限于开发测试\n在点击“是”之前，请确保该URL http://127.0.0.1:5000/api?from=debug 能正常访问并返回符合规范的Json文本\n若点击“否”，将会默认获取 “原神（天空岛，国服）” 相应的资源", "警告", MessageBoxButtons.YesNo) == DialogResult.No)
+                    if (MessageBox.Show("该选项仅限于开发测试\n在点击“是”之前，请确保该URL http://127.0.0.1:5000/api?from=debug 能正常访问并返回符合规范的Json文本\n若点击“否”，将会默认获取 “原神（天空岛，国服）” 相应的资源\n要继续吗？", "警告", MessageBoxButtons.YesNo) == DialogResult.No)
                     {
                         gameChooseBox.SelectedIndex = 0;
                         apiUrl = Properties.Resources.genshin_china;
